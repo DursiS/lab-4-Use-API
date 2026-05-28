@@ -33,8 +33,10 @@ public final class GetAverageGradeUseCase {
             String member = team.getMembers()[i];
             Grade[] grades = gradeDataBase.getGrades(member);
             for (int j = 0; j < grades.length; j++) {
-                sum += grades[j].getGrade();
-                count += 1;
+                if(grades[j].getCourse().equals(course)){
+                    sum += grades[j].getGrade();
+                    count += 1;
+                }
             }
         }
         if (count == 0) {
