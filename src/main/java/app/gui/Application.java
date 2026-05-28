@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.text.Normalizer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ import javax.swing.WindowConstants;
 import api.MongoGradeDataBase;
 import app.Config;
 import entity.Grade;
+import entity.Team;
 import usecase.FormTeamUseCase;
 import usecase.GetAverageGradeUseCase;
 import usecase.GetGradeUseCase;
@@ -90,12 +92,21 @@ public class Application {
             final JButton manageTeamButton = new JButton("My Team");
             manageTeamButton.addActionListener(event -> cardLayout.show(cardPanel, "ManageTeamCard"));
 
+            final JButton getTeamNameButton = new JButton("Get my team's name!");
+            //getTeamNameButton.addActionListener(event -> cardLayout.show(cardPanel, "GetTeamNameCard"));
+            getTeamNameButton.addActionListener(event ->{
+                JOptionPane.showMessageDialog(frame, getAverageGradeUseCase.fakeGetTeamName());
+
+            });
+
             final JPanel buttonPanel = new JPanel();
             buttonPanel.add(getGradeButton);
             buttonPanel.add(logGradeButton);
             buttonPanel.add(formTeamButton);
             buttonPanel.add(joinTeamButton);
             buttonPanel.add(manageTeamButton);
+            buttonPanel.add(getTeamNameButton);
+
 
             frame.getContentPane().add(cardPanel, BorderLayout.CENTER);
             frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
