@@ -14,6 +14,7 @@ public final class GetTopGradeUseCase {
         this.gradeDataBase = gradeDataBase;
     }
 
+
     /**
      * Get the highest grade for a course across your team.
      * @param course The course.
